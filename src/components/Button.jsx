@@ -1,3 +1,5 @@
+
+
 interface ButtonProps {
   children: String;
   // Below way we are able to fix the acceptable parameters of an attribute.

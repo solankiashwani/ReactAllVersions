@@ -11,11 +11,6 @@ interface ListGroupProps {
 export default function ListGroup({ items, heading, onSelectItem }: ListGroupProps) {
   const [selectedIndex, setSelectedIndex] = useState(-1);
 
-  // Event handler via a method
-  const handleClick = (event: MouseEvent) => {
-    console.log(event);
-  };
-
   const getMessage = () => {
     return items.length === 0 ? (
       <p>No item exist in the list: Geronimo</p>
@@ -42,7 +37,7 @@ export default function ListGroup({ items, heading, onSelectItem }: ListGroupPro
             onClick={() => {
               console.log("Clicked on: " + item, index);
               setSelectedIndex(index);
-              onSelectItem(item);
+              onSelectItem(count => count + 1);
             }}
           >
             {item}
