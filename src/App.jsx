@@ -4,21 +4,18 @@ import Alerts from "./components/Alerts";
 import Button from "./components/Button";
 import FormWithDynamicFields from "./components/FormWithDynamicFields";
 import { useAppContext } from './contexts/AppContext';
+import { addItem, removeItem } from './actions'
+import { useDispatch } from 'react-redux';
+
 
 let items = ["Delhi", "Pune", "Mathura"];
 let listOfCities = "List of cities: Geronimo";
-
-const handleItemSelect = (item) => {
-  console.log("Hello Geronimo: ", item);
-};
 
 const App = () => {
   const [alertVisible, alertVisibility] = useState(true);
   const [alertChangeCount, setAlertChangeCount] = useState(0);
   const [listGroupSelectCount, setListGroupSelectCount] = useState(0);
-
   const { alertCount, setAlertCount } = useAppContext();
-
   const toggleAlertVisibility = useCallback(() => {
     alertVisibility(!alertVisible);
     setAlertChangeCount(alertChangeCount + 1);
@@ -26,10 +23,15 @@ const App = () => {
     setAlertCount(newAlertCount);
     console.log("Alerts Geronimo: ", newAlertCount);
   }, [alertVisible, alertChangeCount]);
+  const dispatch = useDispatch();
 
   useEffect(() => {
     console.log('Select count changes to: ', listGroupSelectCount)
   }, [listGroupSelectCount]);
+
+  const handleCheckStore = () => {
+    console.log("Check Store clicked");
+  }
 
   return (
     <div>
@@ -50,6 +52,18 @@ const App = () => {
       </Button>
       <p>Alert visibility changed {alertChangeCount} times</p>
       <FormWithDynamicFields />
+
+      <Button onClick={() => {
+        dispatch(addItem({ id: Date.now(), name: 'New Item', quantity: 1 }));
+      }}>
+        Add to Store
+      </Button>
+
+      <Button onClick={() => {
+        dispatch(removeItem({ id: Date.now(), name: 'New Item', quantity: 1 }));
+      }}>
+        Remove from Store
+      </Button>
     </div>
   );
 }

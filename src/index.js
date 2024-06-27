@@ -4,17 +4,20 @@ import App from "./App";
 import "bootstrap/dist/css/bootstrap.css";
 import reportWebVitals from "./reportWebVitals";
 import { AppProvider } from "./contexts/AppContext";
+// Step 2: Import the Provider component from react-redux
+import { Provider } from "react-redux";
+// Import your Redux store
+import store from "./store"; // Adjust the path as necessary
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
   <React.StrictMode>
-    <AppProvider>
-      <App />
-    </AppProvider>
+    <Provider store={store}> {/* Step 4: Wrap App with Provider and pass the store */}
+      <AppProvider>
+        <App />
+      </AppProvider>
+    </Provider>
   </React.StrictMode>
 );
 
-// If you want to start measuring performance in your app, pass a function
-// to log results (for example: reportWebVitals(console.log))
-// or send to an analytics endpoint. Learn more: https://bit.ly/CRA-vitals
 reportWebVitals();
