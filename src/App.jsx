@@ -17,6 +17,7 @@ const App = () => {
   const [alertChangeCount, setAlertChangeCount] = useState(0);
   const [listGroupSelectCount, setListGroupSelectCount] = useState(0);
 
+  // TEST
   const { alertCount, setAlertCount } = useAppContext();
 
   const toggleAlertVisibility = useCallback(() => {
