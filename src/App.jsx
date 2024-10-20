@@ -6,6 +6,7 @@ import FormWithDynamicFields from "./components/FormWithDynamicFields";
 import { useAppContext } from './contexts/AppContext';
 import { addItem, removeItem } from './actions'
 import { useDispatch } from 'react-redux';
+import StateReader from './components/StateReader'; // Import StateReader component
 
 
 let items = ["Delhi", "Pune", "Mathura"];
@@ -54,7 +55,7 @@ const App = () => {
       <FormWithDynamicFields />
 
       <Button onClick={() => {
-        dispatch(addItem({ id: Date.now(), name: 'New Item', quantity: 1 }));
+        dispatch(addItem({ id: Date.now(), name: 'New Item'}));
       }}>
         Add to Store
       </Button>
@@ -64,6 +65,14 @@ const App = () => {
       }}>
         Remove from Store
       </Button>
+
+      <Button onClick={() => {
+        dispatch(addItem({ id: Date.now(), name: 'New Item', quantity: 'Geronimo'}));
+      }}>
+        Add another type
+      </Button>
+
+      <StateReader /> {/* Render StateReader component */}
     </div>
   );
 }
