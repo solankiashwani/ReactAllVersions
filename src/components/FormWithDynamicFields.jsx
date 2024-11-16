@@ -6,6 +6,8 @@ const DynamicForm = ({ fields, addField, updateField, removeField }) => {
     return (
         <div>
             {/* Render the dynamic text fields */}
+            <h1> Dynamic Form fields component</h1>
+            <h2>Demonstration of HOC pattern</h2>
             {fields.map((field, index) => (
                 <div key={index}>
                     <input

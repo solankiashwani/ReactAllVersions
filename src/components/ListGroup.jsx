@@ -2,7 +2,6 @@ import { Fragment, MouseEvent, useState, React } from "react";
 
 interface ListGroupProps {
   items: string[];
-  heading: String;
   // This is the way to define functions inside props. Using this you can pass function implementations with components.
   onSelectItem: (item: string) => void;
 }
@@ -20,7 +19,7 @@ export default function ListGroup({ items, heading, onSelectItem }: ListGroupPro
 
   return (
     <Fragment>
-      <h1>{heading}</h1>
+      <h1>List Group Component</h1>
       <ul className="list-group">
         {/* This is the standard way to get conditional jsx in react */}
         {getMessage()}
@@ -43,6 +42,7 @@ export default function ListGroup({ items, heading, onSelectItem }: ListGroupPro
             {item}
           </li>
         ))}
+        <p>Check logs for selected component.</p>
       </ul>
     </Fragment>
   )

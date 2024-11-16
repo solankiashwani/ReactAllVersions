@@ -1,0 +1,19 @@
+.app-container {
+  display: flex;
+}
+
+.button-container {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin-right: 20px;
+}
+
+.small-button {
+  padding: 5px 10px;
+  font-size: 12px;
+}
+
+.components-container {
+  flex-grow: 1;
+}
